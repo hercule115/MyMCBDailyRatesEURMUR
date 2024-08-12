@@ -1,0 +1,15 @@
+[Unit]
+Description=myMCBDailyRates-ws
+After=network.target
+
+[Service]
+ExecStart=python3 /usr/share/hassio/homeassistant/www/tools/myMCBDailyRates/myMCBDailyRates.py -s -d -f /usr/share/hassio/homeassistant/www/tools/myMCBDailyRates/myMCBDailyRates-ws.log
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+IgnoreSIGPIPE=true
+Restart=always
+RestartSec=3
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
